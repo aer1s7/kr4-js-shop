@@ -23,6 +23,9 @@ shop/images/preview.jpg"
     <title>Каталог товаров — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/data.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/cart.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -61,25 +64,29 @@ shop/images/preview.jpg"
         <span class="breadcrumbs__current">Каталог</span>
       </nav>
       <section class="catalog-layout">
-        <aside class="catalog-filters">
+        <aside class="catalog-controls" aria-label="Управление каталогом">
           <h2>Фильтры</h2>
-          <form class="filters-form" action="#" method="get">
-            <fieldset>
+          <div class="filters-form">
+            <fieldset class="catalog-controls__group">
               <legend>Категория</legend>
-              <label>
-                <input type="checkbox" name="category" value="all" />
-                Все товары
-              </label>
-              <label>
-                <input type="checkbox" name="category" value="popular" />
-                Популярные
-              </label>
-              <label>
-                <input type="checkbox" name="category" value="new" />
-                Новинки
-              </label>
+              <select id="category-filter" class="catalog-controls__select">
+                <option value="all">Все категории</option>
+                <option value="laptops">Ноутбуки</option>
+                <option value="keyboards">Клавиатуры</option>
+                <option value="audio">Аудиотехника</option>
+                <option value="home">Бытовая техника</option>
+              </select>
             </fieldset>
-            <fieldset>
+            <fieldset class="catalog-controls__group">
+              <legend>Сортировка</legend>
+              <select id="sort-select" class="catalog-controls__select">
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="title-asc">По названию А-Я</option>
+              </select>
+            </fieldset>
+            <fieldset class="catalog-controls__group">
               <legend>Цена</legend>
               <label for="price-from">От</label>
               <input
@@ -87,7 +94,8 @@ shop/images/preview.jpg"
                 name="price-from"
                 type="number"
                 min="0"
-                placeholder="0"
+                placeholder="0 ₽"
+                autocomplete="off"
               />
               <label for="price-to">До</label>
               <input
@@ -95,17 +103,30 @@ shop/images/preview.jpg"
                 name="price-to"
                 type="number"
                 min="0"
-                placeholder="5000"
+                placeholder="5 000 ₽"
+                autocomplete="off"
               />
             </fieldset>
             <button class="button button--primary" type="submit">
               Применить
             </button>
-          </form>
+          </div>
+          <p class="catalog-count" aria-live="polite"></p>
+          <p class="catalog-empty" hidden>
+            По выбранным условиям товары не найдены.
+          </p>
         </aside>
         <section class="catalog-products">
-          <h2>Список товаров</h2>
-          <div class="products-grid">
+          <div class="catalog-controls__search">
+            <input
+              id="catalog-search"
+              class="catalog-controls__input"
+              type="search"
+              placeholder="Поиск товара"
+              autocomplete="off"
+            />
+          </div>
+          <div class="products-grid" data-products-container>
             <article class="product-card product-card--featured">
               <span class="product-card__badge">Новинка</span>
               <a href="product.html"
@@ -273,6 +294,11 @@ shop/images/preview.jpg"
         <p>&copy; 2026 — Учебный проект</p>
       </div>
     </footer>
+    <a href="cart.html" class="cart-msg" aria-live="polite" hidden></a>
+    <a href="cart.html" class="cart-counter" aria-live="polite" hidden
+      >В корзине: 0</a
+    >
+
     <a href="#top" class="scroll-top" aria-label="Наверх" title="Наверх"
       ><img class="scroll-top__img" src="images/top.png" alt="Наверх"
     /></a>

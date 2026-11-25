@@ -5,6 +5,9 @@ const products = [
     category: "audio",
     price: 6999,
     isAvailable: true,
+    image: "images/product-1.jpg",
+    description:
+      "Bluetooth 5.3, до 100 часов работы, быстрая зарядка USB Type-C.",
   },
   {
     id: 2,
@@ -12,6 +15,8 @@ const products = [
     category: "keyboards",
     price: 4199,
     isAvailable: true,
+    image: "images/product-2.jpg",
+    description: "Компактный формат, подсветка, программируемые клавиши.",
   },
   {
     id: 3,
@@ -19,6 +24,8 @@ const products = [
     category: "laptops",
     price: 69999,
     isAvailable: false,
+    image: "images/product-3.jpg",
+    description: "Яркий экран, длительная автономность, быстрый SSD.",
   },
   {
     id: 4,
@@ -26,6 +33,8 @@ const products = [
     category: "tvs",
     price: 30790,
     isAvailable: true,
+    image: "images/product-4.webp",
+    description: "43-дюймовый телевизор с разрешением 4K Ultra HD.",
   },
   {
     id: 5,
@@ -33,6 +42,8 @@ const products = [
     category: "home",
     price: 34990,
     isAvailable: false,
+    image: "images/product-5.webp",
+    description: "Робот-пылесос предназначен для ежедневной уборки.",
   },
   {
     id: 6,
@@ -40,6 +51,9 @@ const products = [
     category: "home",
     price: 32499,
     isAvailable: true,
+    image: "images/product-6.webp",
+    description:
+      "Модель оснащена двумя камерами с общим полезным объемом 340 л.",
   },
   {
     id: 7,
@@ -47,6 +61,9 @@ const products = [
     category: "keyboards",
     price: 5199,
     isAvailable: true,
+    image: "images/product-7.webp",
+    description:
+      "Клавиши оснащены RGB‑подсветкой и изготовлены из PBT-пластика.",
   },
   {
     id: 8,
@@ -54,6 +71,9 @@ const products = [
     category: "keyboards",
     price: 4099,
     isAvailable: true,
+    image: "images/product-8.webp",
+    description:
+      "Благодаря быстрому отклику ваши пальцы не будут уставать при наборе текста или во время управления персонажем в игре.",
   },
   {
     id: 9,
@@ -61,6 +81,9 @@ const products = [
     category: "laptops",
     price: 117999,
     isAvailable: false,
+    image: "images/product-9.webp",
+    description:
+      "Обеспечивает высокую вычислительную мощность при обработке графического контента и в играх.",
   },
   {
     id: 10,
@@ -68,6 +91,9 @@ const products = [
     category: "laptops",
     price: 86999,
     isAvailable: true,
+    image: "images/product-10.webp",
+    description:
+      "Бюджетный ноутбук Apple с пассивным охлаждением и алюминиевым корпусом.",
   },
   {
     id: 11,
@@ -75,5 +101,8 @@ const products = [
     category: "audio",
     price: 3499,
     isAvailable: true,
+    image: "images/product-11.webp",
+    description:
+      "Закрытое акустическое оформление обеспечивает пассивную звукоизоляцию.",
   },
 ];
