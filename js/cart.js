@@ -164,10 +164,8 @@ function renderCart() {
     const row = createElement("article", "cart-item");
     row.dataset.cartProduct = String(product.id);
 
-    // 1. Картинка
     const image = createProductImage(product, "cart-item__image");
 
-    // 2. Левая часть с информацией (Название, Цена за шт, Количество)
     const info = createElement("div", "cart-item__info");
 
     const heading = createElement("h2", "cart-item__title");
@@ -197,7 +195,6 @@ function renderCart() {
 
     info.append(heading, unitPrice, quantity);
 
-    // 3. Правая часть с ценой и корзиной
     const actions = createElement("div", "cart-item__actions");
 
     const lineTotal = createElement(
@@ -206,11 +203,10 @@ function renderCart() {
       formatPrice(product.price * item.quantity),
     );
 
-    // Кнопка удаления в виде мусорки
     const remove = createActionButton(
       "remove",
       product.id,
-      "", // Текст пустой, так как будет картинка
+      "", 
       "button button--secondary button--icon",
     );
     remove.setAttribute("aria-label", `Удалить из корзины: ${product.title}`);
@@ -225,7 +221,6 @@ function renderCart() {
 
     actions.append(lineTotal, remove);
 
-    // Собираем карточку
     row.append(image, info, actions);
     container.append(row);
   });
