@@ -20,6 +20,7 @@
     <title>Оформление заявки — Electron</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/validation.js" defer></script>
   </head>
   <body>
     <a id="top"></a>
@@ -93,23 +94,25 @@
           id="order-page-form"
           action="order.html"
           method="get"
+          novalidate
         >
           <h2 class="order-card__title">Данные для заявки</h2>
 
           <fieldset class="order-form__group order-form__group--wide">
-            <legend class="order-form__legend">Что заказываем</legend>
+            <legend class="order-form__legend">Тема обращения</legend>
 
             <div class="order-form__field">
               <label class="order-form__label" for="page-product">
-                Товар / тема заявки
+                Товар
               </label>
               <input
                 class="order-form__input"
-                id="page-product"
-                name="product"
+                id="order-product"
+                name="proudct"
                 type="text"
-                placeholder="Например: Наушники накладные чёрные"
+                placeholder="Например: Беспроводные наушники Marshall Major V"
               />
+              <p class="form-error" id="order-product-error"></p>
             </div>
 
             <div class="order-form__field">
@@ -119,30 +122,16 @@
               </label>
               <select
                 class="order-form__select"
-                id="page-topic"
+                id="order-topic"
                 name="topic"
                 required
               >
-                <option value="">Выберите тему</option>
-                <option value="product">Заказ товара</option>
+                <option value="default">Выберите тему</option>
+                <option value="returnment">Возврат товара</option>
                 <option value="consultation">Консультация</option>
                 <option value="delivery">Доставка</option>
               </select>
-            </div>
-
-            <div class="order-form__field">
-              <label class="order-form__label" for="page-delivery">
-                Способ получения
-              </label>
-              <select
-                class="order-form__select"
-                id="page-delivery"
-                name="delivery"
-              >
-                <option value="pickup">Самовывоз</option>
-                <option value="courier">Курьером</option>
-                <option value="post">Почтой</option>
-              </select>
+              <p class="form-error" id="order-topic-error"></p>
             </div>
           </fieldset>
 
@@ -156,13 +145,14 @@
               </label>
               <input
                 class="order-form__input"
-                id="page-name"
+                id="order-name"
                 name="name"
                 type="text"
                 placeholder="Введите ваше имя"
                 autocomplete="given-name"
                 required
               />
+              <p class="form-error" id="order-name-error"></p>
             </div>
 
             <div class="order-form__field">
@@ -172,13 +162,14 @@
               </label>
               <input
                 class="order-form__input"
-                id="page-email"
+                id="order-email"
                 name="email"
                 type="email"
                 placeholder="example@mail.ru"
                 autocomplete="email"
                 required
               />
+              <p class="form-error" id="order-email-error"></p>
             </div>
 
             <div class="order-form__field">
@@ -188,7 +179,7 @@
               </label>
               <input
                 class="order-form__input"
-                id="page-phone"
+                id="order-phone"
                 name="phone"
                 type="tel"
                 inputmode="tel"
@@ -197,6 +188,7 @@
                 title="Введите телефон в формате +7 (900) 000-00-00"
                 required
               />
+              <p class="form-error" id="order-phone-error"></p>
             </div>
           </fieldset>
 
@@ -210,18 +202,19 @@
               </label>
               <textarea
                 class="order-form__textarea"
-                id="page-comment"
+                id="order-comment"
                 name="comment"
                 rows="4"
                 placeholder="Укажите количество, цвет или другую информацию"
                 required
               ></textarea>
+              <p class="form-error" id="order-comment-error"></p>
             </div>
 
             <div class="order-form__field">
               <label class="order-form__label" for="page-agreement">
                 <input
-                  id="page-agreement"
+                  id="order-agreement"
                   name="agreement"
                   type="checkbox"
                   value="yes"
@@ -230,6 +223,7 @@
                 Я согласен на обработку персональных данных
                 <span class="order-form__required" aria-hidden="true">*</span>
               </label>
+              <p class="form-error" id="order-agreement-error"></p>
             </div>
           </fieldset>
 
@@ -241,6 +235,7 @@
               Отправить заявку
             </button>
           </div>
+          <p class="form-message" aria-live="polite"></p>
         </form>
         <aside class="order-aside" aria-label="Дополнительная информация">
           <div class="order-aside__card">
